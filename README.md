@@ -1,5 +1,7 @@
 # Superpowers
 
+> **Fork Note:** This is a fork of [obra/superpowers](https://github.com/obra/superpowers) with git worktree creation disabled. The `using-git-worktrees` skill is a no-op, and worktree requirements have been removed from `subagent-driven-development`, `executing-plans`, and `finishing-a-development-branch`. All work happens directly on the current branch. See [upstream issue #XXX](https://github.com/obra/superpowers/issues/XXX) for the feature request to make worktrees optional. To stay current with upstream: `git fetch upstream && git merge upstream/main`.
+
 Superpowers is a complete software development workflow for your coding agents, built on top of a set of composable "skills" and some initial instructions that make sure your agent uses them.
 
 ## How it works
