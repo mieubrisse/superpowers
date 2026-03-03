@@ -37,17 +37,22 @@ digraph brainstorming {
     "Explore project context" [shape=box];
     "Ask clarifying questions" [shape=box];
     "Propose 2-3 approaches" [shape=box];
-    "Present design sections" [shape=box];
-    "User approves design?" [shape=diamond];
+    "Phase 1: Architecture + Components" [shape=box];
+    "Phase 1 approved?" [shape=diamond];
+    "Phase 2: Data flow, error handling, testing" [shape=box];
+    "Phase 2 approved?" [shape=diamond];
     "Write design doc" [shape=box];
     "Invoke writing-plans skill" [shape=doublecircle];
 
     "Explore project context" -> "Ask clarifying questions";
     "Ask clarifying questions" -> "Propose 2-3 approaches";
-    "Propose 2-3 approaches" -> "Present design sections";
-    "Present design sections" -> "User approves design?";
-    "User approves design?" -> "Present design sections" [label="no, revise"];
-    "User approves design?" -> "Write design doc" [label="yes"];
+    "Propose 2-3 approaches" -> "Phase 1: Architecture + Components";
+    "Phase 1: Architecture + Components" -> "Phase 1 approved?";
+    "Phase 1 approved?" -> "Phase 1: Architecture + Components" [label="no, revise"];
+    "Phase 1 approved?" -> "Phase 2: Data flow, error handling, testing" [label="yes"];
+    "Phase 2: Data flow, error handling, testing" -> "Phase 2 approved?";
+    "Phase 2 approved?" -> "Phase 2: Data flow, error handling, testing" [label="no, revise"];
+    "Phase 2 approved?" -> "Write design doc" [label="yes"];
     "Write design doc" -> "Invoke writing-plans skill";
 }
 ```
