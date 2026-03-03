@@ -26,7 +26,7 @@ You MUST create a task for each of these items and complete them in order:
 1. **Explore project context** — check files, docs, recent commits
 2. **Ask clarifying questions** — in focused batches, understand purpose/constraints/success criteria
 3. **Propose 2-3 approaches** — with trade-offs and your recommendation
-4. **Present design** — in sections scaled to their complexity, get user approval after each section
+4. **Present design** — in two phases: Phase 1 (architecture + components), then Phase 2 (data flow, error handling, testing) after Phase 1 is approved
 5. **Write design doc** — save to `docs/plans/YYYY-MM-DD-<topic>-design.md` and commit
 6. **Transition to implementation** — invoke writing-plans skill to create implementation plan
 
@@ -68,10 +68,10 @@ digraph brainstorming {
 - Lead with your recommended option and explain why
 
 **Presenting the design:**
-- Once you believe you understand what you're building, present the design
-- Scale each section to its complexity: a few sentences if straightforward, up to 200-300 words if nuanced
-- Ask after each section whether it looks right so far
-- Cover: architecture, components, data flow, error handling, testing
+- Once you believe you understand what you're building, present the design in two phases
+- **Phase 1: Architecture + Components** — present the high-level structure and the pieces that make it up together, then get user approval before continuing
+- **Phase 2: Data flow, error handling, testing** — once Phase 1 is approved, present these together as one cohesive section
+- Scale each phase to its complexity: a few sentences if straightforward, up to 200-300 words if nuanced
 - Be ready to go back and clarify if something doesn't make sense
 
 ## After the Design
@@ -91,5 +91,5 @@ digraph brainstorming {
 - **Plain text questions** - Ask in conversation, not via the AskUserQuestion tool
 - **YAGNI ruthlessly** - Remove unnecessary features from all designs
 - **Explore alternatives** - Always propose 2-3 approaches before settling
-- **Incremental validation** - Present design, get approval before moving on
+- **Two-phase validation** - Phase 1 (architecture + components), then Phase 2 (data flow, error handling, testing)
 - **Be flexible** - Go back and clarify when something doesn't make sense
