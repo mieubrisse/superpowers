@@ -4,7 +4,8 @@
   "description": "Core skills library: TDD, debugging, collaboration patterns, and proven techniques",
   "version": "4.3.1",
   "author": {
-    "name": "mieubrisse"
+    "name": "Jesse Vincent",
+    "email": "jesse@fsck.com"
   },
   "homepage": "https://github.com/mieubrisse/superpowers",
   "repository": "https://github.com/mieubrisse/superpowers",
