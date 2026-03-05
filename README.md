@@ -1,10 +1,11 @@
 # Superpowers
 
-> **Fork Note:** This is a fork of [obra/superpowers](https://github.com/obra/superpowers) with the following changes:
+> **Fork Note:** This is a fork of [obra/superpowers](https://github.com/obra/superpowers), tuned for fire-and-forget autonomous workflows with [AgenC](https://github.com/mieubrisse/agenc). Changes:
 >
+> - **Edge case discovery:** New skill that systematically enumerates failure modes, boundary conditions, and adversarial inputs between architecture approval and error handling design. Includes domain-specific checklists for CLIs, web APIs, frontends, data pipelines, and infrastructure. Integrated as a required step in the brainstorming flow.
 > - **Worktrees disabled:** The `using-git-worktrees` skill is a no-op, and worktree requirements have been removed from `subagent-driven-development`, `executing-plans`, and `finishing-a-development-branch`. All work happens directly on the current branch. See [upstream issue #583](https://github.com/obra/superpowers/issues/583).
 > - **Batched brainstorming questions:** Questions are asked in focused batches as plain text instead of one-at-a-time via the AskUserQuestion tool.
-> - **Two-phase design presentation:** Design review is condensed into two phases (architecture + components, then data flow + error handling + testing) instead of five separate approval rounds.
+> - **Three-phase design review:** Architecture + components, then edge case discovery, then data flow + error handling + testing — instead of five separate approval rounds.
 > - **Always subagent-driven:** The writing-plans skill skips the execution choice and always proceeds with subagent-driven development.
 >
 > To stay current with upstream: `git fetch upstream && git merge upstream/main`.
