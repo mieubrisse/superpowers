@@ -26,9 +26,11 @@ You MUST create a task for each of these items and complete them in order:
 1. **Explore project context** — check files, docs, recent commits
 2. **Ask clarifying questions** — in focused batches, understand purpose/constraints/success criteria
 3. **Propose 2-3 approaches** — with trade-offs and your recommendation
-4. **Present design** — in two phases: Phase 1 (architecture + components), then Phase 2 (data flow, error handling, testing) after Phase 1 is approved
-5. **Write design doc** — save to `docs/plans/YYYY-MM-DD-<topic>-design.md` and commit
-6. **Transition to implementation** — invoke writing-plans skill to create implementation plan
+4. **Phase 1: Architecture + Components** — present high-level structure, get user approval
+5. **Edge case discovery** — invoke superpowers:edge-case-discovery to systematically enumerate failure modes against the approved architecture
+6. **Phase 2: Data flow, error handling, testing** — present these informed by the discovered edge cases, get user approval
+7. **Write design doc** — save to `docs/plans/YYYY-MM-DD-<topic>-design.md` and commit
+8. **Transition to implementation** — invoke writing-plans skill to create implementation plan
 
 ## Process Flow
 
@@ -39,6 +41,8 @@ digraph brainstorming {
     "Propose 2-3 approaches" [shape=box];
     "Phase 1: Architecture + Components" [shape=box];
     "Phase 1 approved?" [shape=diamond];
+    "Edge case discovery" [shape=box, style=filled, fillcolor="#ffeecc"];
+    "Edge cases reviewed?" [shape=diamond];
     "Phase 2: Data flow, error handling, testing" [shape=box];
     "Phase 2 approved?" [shape=diamond];
     "Write design doc" [shape=box];
@@ -49,7 +53,10 @@ digraph brainstorming {
     "Propose 2-3 approaches" -> "Phase 1: Architecture + Components";
     "Phase 1: Architecture + Components" -> "Phase 1 approved?";
     "Phase 1 approved?" -> "Phase 1: Architecture + Components" [label="no, revise"];
-    "Phase 1 approved?" -> "Phase 2: Data flow, error handling, testing" [label="yes"];
+    "Phase 1 approved?" -> "Edge case discovery" [label="yes"];
+    "Edge case discovery" -> "Edge cases reviewed?";
+    "Edge cases reviewed?" -> "Edge case discovery" [label="no, revise"];
+    "Edge cases reviewed?" -> "Phase 2: Data flow, error handling, testing" [label="yes"];
     "Phase 2: Data flow, error handling, testing" -> "Phase 2 approved?";
     "Phase 2 approved?" -> "Phase 2: Data flow, error handling, testing" [label="no, revise"];
     "Phase 2 approved?" -> "Write design doc" [label="yes"];
@@ -73,9 +80,10 @@ digraph brainstorming {
 - Lead with your recommended option and explain why
 
 **Presenting the design:**
-- Once you believe you understand what you're building, present the design in two phases
+- Once you believe you understand what you're building, present the design in two phases with edge case discovery between them
 - **Phase 1: Architecture + Components** — present the high-level structure and the pieces that make it up together, then get user approval before continuing
-- **Phase 2: Data flow, error handling, testing** — once Phase 1 is approved, present these together as one cohesive section
+- **Edge case discovery** — once Phase 1 is approved, invoke superpowers:edge-case-discovery to systematically enumerate failure modes, boundary conditions, and adversarial inputs against the approved architecture. Present the results to the user for review.
+- **Phase 2: Data flow, error handling, testing** — once edge cases are reviewed, present these together as one cohesive section. Error handling must address the specific edge cases discovered, not generic platitudes.
 - Scale each phase to its complexity: a few sentences if straightforward, up to 200-300 words if nuanced
 - Be ready to go back and clarify if something doesn't make sense
 
@@ -96,5 +104,5 @@ digraph brainstorming {
 - **Plain text questions** - Ask in conversation, not via the AskUserQuestion tool
 - **YAGNI ruthlessly** - Remove unnecessary features from all designs
 - **Explore alternatives** - Always propose 2-3 approaches before settling
-- **Two-phase validation** - Phase 1 (architecture + components), then Phase 2 (data flow, error handling, testing)
+- **Three-phase validation** - Phase 1 (architecture + components), then edge case discovery, then Phase 2 (data flow, error handling, testing)
 - **Be flexible** - Go back and clarify when something doesn't make sense
